@@ -19,9 +19,16 @@
             <el-menu-item index="1">
               <router-link to="/">首页</router-link>
             </el-menu-item>
-            <el-menu-item index="2">
-              <router-link to="/esg">银行业务</router-link>
-            </el-menu-item>
+
+            <el-sub-menu index="2">
+              <template #title>银行业务</template>
+
+              <el-menu-item index="2-1">
+                <router-link to="/esg">人民币储蓄存款</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-2"></el-menu-item>
+              <el-menu-item index="2-3">item three</el-menu-item>
+            </el-sub-menu>
             <el-menu-item index="3">
               <router-link to="/domestic">ESG国内标准</router-link>
             </el-menu-item>
