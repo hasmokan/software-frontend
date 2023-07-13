@@ -20,13 +20,13 @@
               <router-link to="/">首页</router-link>
             </el-menu-item>
             <el-menu-item index="2">
-              <router-link to="/esg">ESG报告分析</router-link>
+              <router-link to="/esg">银行业务</router-link>
             </el-menu-item>
             <el-menu-item index="3">
               <router-link to="/domestic">ESG国内标准</router-link>
             </el-menu-item>
             <el-menu-item index="4">
-              <router-link to="/international">ESG国际标准</router-link>
+              <router-link to="/international">账户管理</router-link>
             </el-menu-item>
             <!-- 下拉 -->
             <div class="flex flex-wrap items-center">
@@ -36,9 +36,8 @@
                 </el-button>
                 <template #dropdown>
                   <el-dropdown-menu>
+                    <el-dropdown-item>个人登陆</el-dropdown-item>
                     <el-dropdown-item>企业登陆</el-dropdown-item>
-                    <el-dropdown-item>机构登陆</el-dropdown-item>
-                    <el-dropdown-item>政府登陆</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
@@ -103,4 +102,35 @@ const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+@font-face {
+  font-family: AlimamaFangYuanTiVF-Thin;
+  src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.eot)
+      format('embedded-opentype'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.otf)
+      format('opentype'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.ttf)
+      format('TrueType'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.woff)
+      format('woff'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.woff2)
+      format('woff2');
+}
+@font-face {
+  font-family: DingTalkJinBuTi-Regular;
+  src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.eot)
+      format('embedded-opentype'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.otf)
+      format('opentype'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.ttf)
+      format('TrueType'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.woff)
+      format('woff'),
+    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.woff2)
+      format('woff2');
+}
+
+.el-menu {
+  font-family: AlimamaFangYuanTiVF-Thin;
+}
+</style>

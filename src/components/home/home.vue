@@ -1,6 +1,13 @@
 <template>
+  <el-carousel height="450px">
+    <el-carousel-item>
+      <img class="img" style="width: 100%; height: 100%" :src="head1" />
+    </el-carousel-item>
+    <el-carousel-item>
+      <img class="img" style="width: 100%; height: 100%" :src="head2" />
+    </el-carousel-item>
+  </el-carousel>
   <el-main>
-    <img class="headimg" src="/assets/img/building-headimg.jpg" alt="" />
     <!-- 中间对齐的页面 -->
     <div class="centerbody">
       <div class="warpper">
@@ -8,11 +15,8 @@
           <!-- 上面的黄色条纹 -->
           <div class="titleBox">
             <div class="header-line"></div>
-            <div class="titleTextBox">ESG智能分析</div>
+            <div class="titleTextBox">西北银行管理系统</div>
           </div>
-          <span>
-            ESG包含环境(ENVIRONMENTAL)、社会责任(SOCIAL)与公司治理(GOVERNANCE)三个维度。
-          </span>
         </div>
         <!-- esg报告下面图片后的内容 -->
         <div class="middle">
@@ -25,9 +29,7 @@
                 <li>环保政策</li>
                 <li>绿色技术</li>
                 <li>环保投入</li>
-                <li>温室气体排放</li>
-                <li>员工环保意识</li>
-                <li>绿色采购政策</li>
+                <li>绿色资产</li>
                 <li>.....</li>
               </ul>
             </div>
@@ -36,20 +38,16 @@
                 <li>精准扶贫</li>
                 <li>产业扶贫</li>
                 <li>乡村振兴</li>
-                <li>公益慈善</li>
-                <li>社区沟通</li>
-                <li>员工福利与健康</li>
+                <li>优质基金</li>
                 <li>.....</li>
               </ul>
             </div>
             <div class="box3">
               <ul>
-                <li>股权结构</li>
-                <li>会计政策</li>
-                <li>薪酬体系</li>
+                <li>转账查询</li>
+                <li>汇款记录</li>
+                <li>账户查询</li>
                 <li>风险管理</li>
-                <li>信息披露</li>
-                <li>反不公平竞争</li>
                 <li>.....</li>
               </ul>
             </div>
@@ -59,19 +57,36 @@
     </div>
     <div class="succ">
       <div class="succ-header">
-        <div class="succ-header-line"></div>
-        <div class="succ-header-text">成功案例</div>
-        <div class="succ-header-caselist">
+        <div>
+          <div class="succ-header-line"></div>
+          <div class="succ-header-text">银行业务</div>
+
           <!-- <img src="src/assets/img/xiaomi.png" alt="" />
           <img src="src/assets/img/xiaomi.png" alt="" />
           <img src="src/assets/img/xiaomi.png" alt="" /> -->
         </div>
       </div>
       <div class="succ-case">
-        <img src="/assets/img/successimg.jpg" alt="" />
+        <img class="img1" src="public/assets/img/case1.jpg" alt="" />
         <div class="succ-case-text">
           <div class="succ-case-text-line"></div>
-          <div class="succ-case-text-header">成功案例1</div>
+          <div class="container">
+            <div class="pic">
+              <img src="public/assets/img/1.png" />
+              <i class="iconfont icon-licai">账户查询</i>
+            </div>
+            <div class="pic">
+              <img src="public/assets/img/2.png" />
+              <!-- <div class="title">译</div> -->
+            </div>
+            <div class="pic">
+              <img src="public/assets/img/3.png" />
+              <!-- <div class="title">中</div> -->
+            </div>
+          </div>
+
+          <!-- <i class="iconfont icon-qianbi">资产查询</i>
+          <i class="iconfont icon-yinhang"></i> -->
         </div>
       </div>
       <div class="succ-case">
@@ -79,10 +94,10 @@
           <div class="succ-case-text-line"></div>
           <div class="succ-case-text-header">成功案例2</div>
         </div>
-        <img src="/assets/img/successimg.jpg" alt="" />
+        <img class="img2" src="/assets/img/successimg.jpg" alt="" />
       </div>
       <div class="succ-case">
-        <img src="/assets/img/successimg.jpg" alt="" />
+        <img class="img3" src="/assets/img/successimg.jpg" alt="" />
         <div class="succ-case-text">
           <div class="succ-case-text-line"></div>
           <div class="succ-case-text-header">成功案例3</div>
@@ -97,6 +112,8 @@
 import { ref } from 'vue'
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+import head1 from '/assets/img/head1.png'
+import head2 from '/assets/img/head2.png'
 const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -104,10 +121,6 @@ const handleSelect = (key: string, keyPath: string[]) => {
 </script>
 
 <style lang="scss" scoped>
-.headimg {
-  width: 100%;
-  height: auto;
-}
 .centerbody {
   display: flex;
   width: 100%;
@@ -118,7 +131,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
     .header {
       margin-bottom: 50px;
       .titleTextBox {
-        font-family: 'SimHei';
+        font-family: AlimamaFangYuanTiVF-Thin;
         font-size: 40px;
         font-weight: bold;
         display: flex;
@@ -146,11 +159,16 @@ const handleSelect = (key: string, keyPath: string[]) => {
         }
       }
       .flexbox {
+        font-family: 'DingTalkJinBuTi-Regular';
         margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 80%;
+        li {
+          font-weight: 900;
+          font-family: 'AlimamaFangYuanTiVF-Thin';
+        }
       }
     }
   }
@@ -188,19 +206,20 @@ const handleSelect = (key: string, keyPath: string[]) => {
   &-header {
     width: 100%;
     height: 300px;
-    // background-image: url("src/assets/img/greybackground.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     &::after {
       content: '';
-      // background-image: url('../../public/assets/img/greybackground.jpg'); // 背景图片的路径
-      opacity: 0.1;
-      display: inline-block;
-      width: 100%;
-      height: 300px;
-      position: relative;
-      top: -80%;
+      background: url('public/assets/img/greybackground.jpg');
+      opacity: 0.2;
+      top: 0;
       left: 0;
       bottom: 0;
       right: 0;
+      position: absolute;
+      z-index: -1;
     }
     &-line {
       position: relative;
@@ -231,13 +250,48 @@ const handleSelect = (key: string, keyPath: string[]) => {
 }
 
 .succ-case {
-  width: 100%;
+  width: 1280px;
   display: flex;
-  img {
+  margin: auto;
+  .img1 {
+    opacity: 0.8;
+    margin: 0 auto;
+  }
+
+  .img2,
+  .img3 {
     object-fit: cover;
     width: 50%;
     opacity: 0.8;
   }
+  .container {
+    width: 920px;
+    height: 100%;
+    overflow: hidden;
+    /* 一定要开启flex布局 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 缩小0.8，方便演示 */
+    /* transform: scale(0.8); */
+    .pic {
+      position: relative;
+      /* flex布局下当前元素自动缩放时占比为1，当前所有的pic元素占比均为一，等于所有元素大小保持一致的缩放 */
+      height: 100%;
+      flex-shrink: 1;
+      flex-grow: 1;
+      /* 一定要开启 */
+      /* 要不然超出的图片会把pic图层撑开，失去最终效果 */
+      overflow: hidden;
+      transition: 1s;
+    }
+  }
+
+  .pic:hover {
+    flex-shrink: 0.5;
+    flex-grow: 0.5;
+  }
+
   &-text {
     width: 100%;
     display: flex;
