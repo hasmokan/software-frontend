@@ -35,24 +35,38 @@
                         <el-menu-item index="4">
                             <router-link to="/international">账户管理</router-link>
                         </el-menu-item>
-                        <!-- 下拉 -->
-                        <div class="flex flex-wrap items-center">
+                        <!-- 下拉 登陆按钮-->
+                        <div v-show="!loginState" class="flex flex-wrap items-center">
                             <el-dropdown>
                                 <el-button type="primary" color="rgb(255,165,5)">
                                     系统登陆<el-icon class="el-icon--right"><arrow-down /></el-icon>
                                 </el-button>
                                 <template #dropdown>
                                     <el-dropdown-menu>
-                                        <el-dropdown-item @click="PersonalLogin"
+                                        <el-dropdown-item @click="PersonalLoginClick"
                                             >个人登陆</el-dropdown-item
                                         >
-                                        <el-dropdown-item @click="EnterpriseLogin"
+                                        <el-dropdown-item @click="EnterpriseLoginClick"
                                             >企业登陆</el-dropdown-item
                                         >
                                     </el-dropdown-menu>
                                 </template>
                             </el-dropdown>
                         </div>
+                        <span
+                            v-show="loginState"
+                            style="
+                                width: 200px;
+                                margin-left: 50px;
+                                white-space: nowrap;
+                                display: flex;
+                                font-size: smaller;
+                                color: white;
+                            "
+                        >
+                            您好，尊敬的 &ensp;
+                            <div style="color: gold">{{ userName }}</div>
+                        </span>
                         <!-- 搜索框 -->
                         <div class="search">
                             <el-input placeholder="Please input" class="input-with-select">
@@ -102,6 +116,30 @@
                 </el-footer>
             </el-container>
         </div>
+        <el-dialog v-model="centerDialogVisible" width="410px" center>
+            <template #header="{ close, titleId, titleClass }">
+                <div class="my-header" style="margin-left: 200px">
+                    <h4 :id="titleId" :class="titleClass" style="font-size: 14px; color: gray">
+                        终于等到你~
+                        <img src="public/assets/img/logo.png" alt="" style="width: 40px" />
+                    </h4>
+                </div>
+            </template>
+            <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+                <el-tab-pane label="登陆" name="first">
+                    <el-input v-model="input" placeholder="账号/用户名" />
+                    <el-input v-model="input" type="password" placeholder="密码" show-password />
+                    <div class="forget-password">忘记密码</div>
+                    <el-button type="primary" @click="handlePersonalLogin"> 登陆 </el-button>
+                </el-tab-pane>
+                <el-tab-pane label="注册" name="second">
+                    <el-input v-model="input" placeholder="账号/用户名" />
+                    <el-input v-model="input" type="password" placeholder="密码" show-password />
+                    <div class="forget-password">忘记密码</div>
+                    <el-button type="primary" @click="handlePersonalRegister"> 注册 </el-button>
+                </el-tab-pane>
+            </el-tabs>
+        </el-dialog>
     </div>
 </template>
 
@@ -110,16 +148,45 @@
 import { ref } from 'vue'
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
+import type { TabsPaneContext } from 'element-plus/es/components/tabs/src/constants'
+import { useUserStore } from './stores/userStore'
+import { useLoginStore } from './stores/loginState'
+
+// button的登陆状态
+const loginState = ref(useLoginStore().getLoginState)
+//用户名称
+const userName = ref(useUserStore().userId)
+//导航栏
 const activeIndex2 = ref('1')
+
+//登录注册对话框
+const centerDialogVisible = ref(false)
 const handleSelect = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
 }
 
-const PersonalLogin = () => {
-    
+const input = ref('')
+//登陆事件
+const PersonalLoginClick = () => {
+    centerDialogVisible.value = true
+}
+
+const handlePersonalLogin = () => {
+    centerDialogVisible.value = false
+    loginState.value = true
+}
+
+const handlePersonalRegister = () => {}
+const EnterpriseLoginClick = () => {}
+
+//标签页
+const activeName = ref('first')
+
+const handleClick = (tab: TabsPaneContext, event: Event) => {
+    console.log(tab, event)
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @font-face {
     font-family: AlimamaFangYuanTiVF-Thin;
     src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.eot)
@@ -149,5 +216,31 @@ const PersonalLogin = () => {
 
 .el-menu {
     font-family: AlimamaFangYuanTiVF-Thin;
+}
+.el-dialog {
+    :deep(.my-header) {
+        width: 100%;
+        background-color: rgb(248, 248, 248);
+    }
+    .el-input {
+        margin-bottom: 20px;
+        :deep(.el-input__wrapper) {
+            background-color: rgb(245, 246, 247);
+        }
+    }
+    .el-button {
+        margin-top: 30px;
+        width: 100%;
+        border-radius: 300px;
+    }
+    .forget-password {
+        margin-left: 300px;
+    }
+    .el-tabs__content {
+        padding: 32px;
+        color: #6b778c;
+        font-size: 32px;
+        font-weight: 600;
+    }
 }
 </style>

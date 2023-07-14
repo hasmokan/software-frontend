@@ -11,7 +11,7 @@
 
   ],
   "compilerOptions": {
-
+    "ignoreDeprecations": "5.0",
     "allowJs": true,
     "target": "esnext",
     "module": "esnext",
