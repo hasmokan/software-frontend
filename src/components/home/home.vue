@@ -127,13 +127,41 @@
                 </div>-->
             </div>
             <div class="succ-header" style="height: 100px"></div>
-            <div class="succ-case">
-                <img class="img3" src="/assets/img/successimg.jpg" alt="" />
-                <div class="succ-case-text">
-                    <div class="succ-case-text-line"></div>
-                    <div class="succ-case-text-header">成功案例3</div>
-                </div>
+          <div class="succ-case">
+            <div class="succ-case-container">
+              <div class="succ-case-text">
+                <div class="succ-case-text-line"></div>
+                <div class="succ-case-text-header" style="">存取业务</div>
+              </div>
+              <div class="label">贷款任选，轻松解决，闪电审批，一步到位</div>
             </div>
+            <div class="flex-bottom-box">
+              <img class="img1" src="public/assets/img/2.1.jpg" alt="" />
+              <div class="succ-case-text">
+                <div class="container">
+                  <div class="pic">
+                    <img src="public/assets/img/2.2.jpg" />
+                    <!-- <i class="iconfont icon-licai">账户查询</i> -->
+                  </div>
+                  <div class="pic">
+                    <img src="public/assets/img/2.3.jpg" />
+                    <!-- <div class="title">译</div> -->
+                  </div>
+                  <div class="pic">
+                    <img src="public/assets/img/2.4.jpg" />
+                    <!-- <div class="title">中</div> -->
+                  </div>
+                  <div class="pic">
+                    <img src="public/assets/img/2.5.jpg" />
+                    <!-- <div class="title">中</div> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- <i class="iconfont icon-qianbi">资产查询</i>
+              <i class="iconfont icon-yinhang"></i> -->
+            </div>
+          </div>
         </div>
     </el-main>
 </template>
