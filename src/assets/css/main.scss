@@ -78,7 +78,7 @@
                     &::before {
                         border-radius: 50%;
                         display: inline-block;
-                        content: "";
+                        content: '';
                         background-color: whitesmoke;
                         width: 10px;
                         height: 10px;
@@ -130,29 +130,27 @@
 
 @font-face {
     font-family: AlimamaFangYuanTiVF-Thin;
-    src:
-        url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.eot)
-            format("embedded-opentype"),
+    src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.eot)
+            format('embedded-opentype'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.otf)
-            format("opentype"),
+            format('opentype'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.ttf)
-            format("TrueType"),
+            format('TrueType'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.woff)
-            format("woff"),
+            format('woff'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/AlimamaFangYuanTiVF-Thin/AlimamaFangYuanTiVF-Thin.woff2)
-            format("woff2");
+            format('woff2');
 }
 @font-face {
     font-family: DingTalkJinBuTi-Regular;
-    src:
-        url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.eot)
-            format("embedded-opentype"),
+    src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.eot)
+            format('embedded-opentype'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.otf)
-            format("opentype"),
+            format('opentype'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.ttf)
-            format("TrueType"),
+            format('TrueType'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.woff)
-            format("woff"),
+            format('woff'),
         url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.woff2)
-            format("woff2");
+            format('woff2');
 }

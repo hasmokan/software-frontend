@@ -36,7 +36,7 @@
                 }
             }
             .flexbox {
-                font-family: "DingTalkJinBuTi-Regular";
+                font-family: 'DingTalkJinBuTi-Regular';
                 margin: 0 auto;
                 display: flex;
                 justify-content: center;
@@ -44,7 +44,7 @@
                 width: 80%;
                 li {
                     font-weight: 900;
-                    font-family: "AlimamaFangYuanTiVF-Thin";
+                    font-family: 'AlimamaFangYuanTiVF-Thin';
                 }
             }
         }
@@ -64,7 +64,7 @@
     li {
         font-weight: lighter; //为啥不起作用
         line-height: 2em;
-        font-family: "SimHei";
+        font-family: 'SimHei';
         text-align: left;
         // list-style-type: none;
         margin: 0 auto;
@@ -88,8 +88,8 @@
         align-items: center;
         position: relative;
         &::after {
-            content: "";
-            background: url("public/assets/img/greybackground.jpg");
+            content: '';
+            background: url('public/assets/img/greybackground.jpg');
             opacity: 0.2;
             top: 0;
             left: 0;
@@ -107,7 +107,7 @@
             background-color: rgb(255, 165, 5);
         }
         &-text {
-            font-family: "SimHei";
+            font-family: 'SimHei';
             font-size: 40px;
             text-align: center;
             margin-top: 30px;
@@ -141,7 +141,7 @@
                 padding-left: 10px;
                 height: 32px;
                 border-left: 10px solid rgb(255, 165, 5);
-                font-family: "SimHei";
+                font-family: 'SimHei';
                 font-size: 31px;
                 margin: 0 auto;
             }
@@ -155,7 +155,7 @@
             font-size: 14px;
             height: 53px;
             width: 319px;
-            background: url("assets/img/label.png");
+            background: url('assets/img/label.png');
         }
     }
     .flex-bottom-box {
