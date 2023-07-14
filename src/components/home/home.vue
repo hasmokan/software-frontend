@@ -95,11 +95,36 @@
             </div>
             <div class="succ-header" style="height: 100px"></div>
             <div class="succ-case">
-                <div class="succ-case-text">
+                <div class="succ-case-container">
+                    <div class="succ-case-text">
+                        <div class="succ-cass-text-line"></div>
+                        <div class="succ-case-text-header" style="">投资理财</div>
+                    </div>
+                    <div class="label">多样性产品，专业建议 全面服务</div>
+                </div>
+                <div class="flex-bottom-box">
+                    <img class="img2" src="public/assets/img/case2.png" alt=""/>
+                    <div class="succ-case-text">
+                        <div class="container">
+                            <div class="pic">
+                                <img src="public/assets/img/5.png"/>
+                            </div>
+                            <div class="pic">
+                                <img src="public/assets/img/6.png"/>
+                            </div>
+                            <div class="pic">
+                                <img src="public/assets/img/7.png"/>
+                            </div>
+                            <div class="pic">
+                                <img src="public/assets/img/8.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="succ-case-text">
                     <div class="succ-case-text-line"></div>
                     <div class="succ-case-text-header">成功案例2</div>
-                </div>
-                <img class="img2" src="/assets/img/successimg.jpg" alt="" />
+                </div>-->
             </div>
             <div class="succ-header" style="height: 100px"></div>
             <div class="succ-case">
