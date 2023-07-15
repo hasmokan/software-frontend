@@ -44,14 +44,12 @@
     .flex-grow {
         flex-grow: 1;
     }
-
-    // 有二级菜单的标题及子菜单菜单字体颜色
-    .el-menu--collapse .el-menu .el-submenu,
-    .el-menu--popup {
-        min-width: 130px !important;
-    }
 }
-
+// 有二级菜单的标题及子菜单菜单字体颜色
+.el-menu--collapse .el-menu .el-submenu,
+.el-menu--popup {
+    min-width: 130px !important;
+}
 // 面包屑
 .el-breadcrumb {
     margin-top: 20px;

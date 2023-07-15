@@ -24,9 +24,7 @@
 
                         <el-sub-menu index="2">
                             <template #title>银行业务</template>
-                            <el-menu-item index="2-1">
-                                <router-link to="/transaction">银行卡办理</router-link>
-                            </el-menu-item>
+                            <el-menu-item index="2-1"> 银行卡办理 </el-menu-item>
                             <el-menu-item index="2-2"> 资金转账 </el-menu-item>
                             <el-menu-item index="2-3"> 资产查询 </el-menu-item>
                             <el-menu-item index="2-4"> 资产存款 </el-menu-item>
