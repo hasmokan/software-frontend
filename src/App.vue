@@ -95,10 +95,10 @@
                     <div class="right">
                         <div class="imgbox">
                             <div class="code">
-                                <img src="/assets/img/code.png" alt="" class="right-code" />
+                                <img src="@/assets/img/code.png" alt="" class="right-code" />
                                 <div class="right-text">扫码联系我们</div>
                             </div>
-                            <img src="/assets/img/xbdx.png" alt="" class="right-img" />
+                            <img src="@/assets/img/xbdx.png" alt="" class="right-img" />
                         </div>
                     </div>
                 </el-footer>

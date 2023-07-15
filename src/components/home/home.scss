@@ -227,3 +227,58 @@
         }
     }
 }
+
+.div1{
+    font-size: 26px;
+    font-style: italic;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    color: #909090;
+    position:absolute;/* 绝对定位 */
+    top: 35px;
+    left:200px;
+    z-index:5;
+  }
+  .div2{
+    font-size: 15px;
+    position:absolute;
+    left: 480px;
+    z-index:8;
+  }
+  .div3{
+    font-size: 15px;
+    position:absolute;
+    left:830px;
+    z-index:8;
+  }
+  .div4{
+    font-size: 15px;
+    position:absolute;
+    left:1180px;
+    z-index:8;
+  }
+  .diagonal-line {
+    position: absolute;  /* 设置相对定位 */
+    left:280px;
+    bottom:45px;
+    width: 65px;  /* 设置宽度 */
+    height: 2px;  /* 设置高度 */
+    background-color: #cccccc;  /* 设置斜线颜色 */
+    transform: rotate(120deg);  /* 通过旋转实现斜线效果 */
+    transform-origin: center  ;  /* 设置旋转的原点位置 */
+  }
+  .img4{
+    position: absolute;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    left:400px;
+  }
+  .img5{
+    position: absolute;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    left:750px;
+  }
+  .img6{
+    position: absolute;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    left:1100px;
+  }

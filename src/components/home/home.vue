@@ -93,7 +93,16 @@
           <i class="iconfont icon-yinhang"></i> -->
                 </div>
             </div>
-            <div class="succ-header" style="height: 100px"></div>
+            <div class="succ-header" style="height: 100px">
+                <div class="div1">很好用</div>
+                 <div class="diagonal-line"></div>
+                 <img class="img4" src="@/assets/img/11.png">
+                 <div class="div2">存钱取钱秒到账</div>
+                 <img class="img5" src="@/assets/img/22.png">
+                 <div class="div3">账单查询、办理分期更便捷</div>
+                 <img class="img6" src="@/assets/img/33.png">
+                 <div class="div4">账号支付怎么用？</div>
+            </div>
             <div class="succ-case">
                 <div class="succ-case-container">
                     <div class="succ-case-text">
@@ -129,12 +138,21 @@
                     <div class="succ-case-text-header">成功案例2</div>
                 </div>-->
             </div>
-            <div class="succ-header" style="height: 100px"></div>
+            <div class="succ-header" style="height: 100px">
+                 <div class="div1">很方便</div>
+                 <div class="diagonal-line"></div>
+                 <img class="img4" src="@/assets/img/44.png">
+                 <div class="div2">购买理财产品有哪几个步骤？</div>
+                 <img class="img5" src="@/assets/img/55.png">
+                 <div class="div3">如何在线购买基金？</div>
+                 <img class="img6" src="@/assets/img/66.png">
+                 <div class="div4">如何为家庭选择保险产品</div>
+            </div>
             <div class="succ-case">
                 <div class="succ-case-container">
                     <div class="succ-case-text">
                         <div class="succ-case-text-line"></div>
-                        <div class="succ-case-text-header" style="">存取业务</div>
+                        <div class="succ-case-text-header" style="">贷款业务</div>
                     </div>
                     <div class="label">贷款任选，轻松解决，闪电审批，一步到位</div>
                 </div>
@@ -162,6 +180,16 @@
                     </div>
                 </div>
             </div>
+            <div class="succ-header" style="height: 100px">
+                <div class="div1">真迅速</div>
+                <div class="diagonal-line"></div>
+                <img class="img4" src="@/assets/img/77.png">
+                <div class="div2">“快贷”如何计算利息？</div>
+                <img class="img5" src="@/assets/img/88.png">
+                <div class="div3">我都可以在哪方面贷款？</div>
+                <img class="img6" src="@/assets/img/99.png">
+                <div class="div4">贷款秒到账，还款利息低</div>
+           </div>
         </div>
     </el-main>
 </template>
