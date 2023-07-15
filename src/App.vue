@@ -24,18 +24,32 @@
 
                         <el-sub-menu index="2">
                             <template #title>银行业务</template>
-                            <el-menu-item index="2-1" @click=""> 银行卡办理 </el-menu-item>
-                            <el-menu-item index="2-2" @click=""> 资金转账 </el-menu-item>
-                            <el-menu-item index="2-3" @click=""> 资产查询 </el-menu-item>
-                            <el-menu-item index="2-4" @click=""> 资产存款 </el-menu-item>
-                            <el-menu-item index="2-5" @click=""> 资产取款 </el-menu-item>
+                            <el-menu-item index="2-1" @click="handleClickTransaction">
+                                资金转账
+                            </el-menu-item>
+                            <el-menu-item index="2-2" @click="handleClickSelect">
+                                资产查询
+                            </el-menu-item>
+                            <el-menu-item index="2-3" @click="handleClickDeposit">
+                                资产存款
+                            </el-menu-item>
+                            <el-menu-item index="2-4" @click="handleClickWithdrawal">
+                                资产取款
+                            </el-menu-item>
                         </el-sub-menu>
                         <el-menu-item index="3">
                             <router-link to="/domestic">ESG国内标准</router-link>
                         </el-menu-item>
-                        <el-menu-item index="4">
-                            <router-link to="/card">银行卡管理</router-link>
-                        </el-menu-item>
+                        <el-sub-menu index="4">
+                            <template #title>卡业务</template>
+                            <el-menu-item index="4-1" @click="handleClickApply">
+                                银行卡办理
+                            </el-menu-item>
+                            <el-menu-item index="4-2" @click="handleClickManagement">
+                                银行卡管理
+                            </el-menu-item>
+                        </el-sub-menu>
+
                         <!-- 下拉 登陆按钮-->
                         <div v-show="!loginState" class="flex flex-wrap items-center">
                             <el-dropdown>
@@ -230,7 +244,14 @@ import { ArrowDown } from '@element-plus/icons-vue'
 import type { TabsPaneContext } from 'element-plus/es/components/tabs/src/constants'
 import { useUserStore } from './stores/userStore'
 import { useLoginStore } from './stores/loginState'
-
+import {
+    handleClickApply,
+    handleClickDeposit,
+    handleClickManagement,
+    handleClickSelect,
+    handleClickTransaction,
+    handleClickWithdrawal
+} from '@/router/linkTo'
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
 

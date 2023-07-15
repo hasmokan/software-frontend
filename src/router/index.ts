@@ -2,16 +2,16 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-13 18:14:10
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-15 09:44:59
+ * @LastEditTime: 2023-07-15 20:33:50
  * @FilePath: \frontend\src\router\index.ts
  * @Description: 导航
  */
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw, createWebHistory } from 'vue-router'
 import home from '../components/home/home.vue'
 import transaction from '../components/transaction/transaction.vue'
 import card from '../components/cardManagement/card.vue'
 import deme from '../components/domestic/domestic.vue'
-
+import bankbusiness from '../components/bankingBusiness/bankingBusiness.vue'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
@@ -32,12 +32,17 @@ const routes: Array<RouteRecordRaw> = [
         path: '/domestic',
         name: 'demestic',
         component: deme
+    },
+    {
+        path: '/bankBusiness',
+        name: 'bank',
+        component: bankbusiness
     }
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    // history: createWebHistory(),
+    // history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 })
 
