@@ -4,7 +4,7 @@
  * @LastEditors: 雄恺 陈 1021056159@qq.com
  * @LastEditTime: 2023-07-15 09:45:46
  * @FilePath: \frontend\src\components\international\international.vue
- * @Description: 
+ * @Description: 卡务管理
 -->
 <template>
     <div class="manage-account">
@@ -16,7 +16,7 @@
                 <el-breadcrumb-item>账户管理</el-breadcrumb-item>
             </el-breadcrumb>
 
-            <el-table :data="filterTableData" style="width: 100%">
+            <el-table v-loading="true" :data="filterTableData" style="width: 100%">
                 <el-table-column label="账户号" prop="date" />
                 <el-table-column label="账户名" prop="name" />
                 <el-table-column align="right">

@@ -24,11 +24,11 @@
 
                         <el-sub-menu index="2">
                             <template #title>银行业务</template>
-                            <el-menu-item index="2-1"> 银行卡办理 </el-menu-item>
-                            <el-menu-item index="2-2"> 资金转账 </el-menu-item>
-                            <el-menu-item index="2-3"> 资产查询 </el-menu-item>
-                            <el-menu-item index="2-4"> 资产存款 </el-menu-item>
-                            <el-menu-item index="2-5"> 资产存款 </el-menu-item>
+                            <el-menu-item index="2-1" @click=""> 银行卡办理 </el-menu-item>
+                            <el-menu-item index="2-2" @click=""> 资金转账 </el-menu-item>
+                            <el-menu-item index="2-3" @click=""> 资产查询 </el-menu-item>
+                            <el-menu-item index="2-4" @click=""> 资产存款 </el-menu-item>
+                            <el-menu-item index="2-5" @click=""> 资产取款 </el-menu-item>
                         </el-sub-menu>
                         <el-menu-item index="3">
                             <router-link to="/domestic">ESG国内标准</router-link>
@@ -54,20 +54,7 @@
                                 </template>
                             </el-dropdown>
                         </div>
-                        <span
-                            v-show="loginState"
-                            style="
-                                width: 200px;
-                                margin-left: 50px;
-                                white-space: nowrap;
-                                display: flex;
-                                font-size: smaller;
-                                color: white;
-                            "
-                        >
-                            您好，尊敬的 &ensp;
-                            <div style="color: gold">{{ userName }}</div>
-                        </span>
+                        <personCard :loginState="loginState" :userName="userName"></personCard>
                         <!-- 搜索框 -->
                         <div class="search">
                             <el-input placeholder="Please input" class="input-with-select">
@@ -117,6 +104,7 @@
                 </el-footer>
             </el-container>
         </div>
+
         <el-dialog v-model="centerDialogVisible" width="410px" center>
             <template #header="{ close, titleId, titleClass }">
                 <div class="my-header" style="margin-left: 200px">
@@ -153,6 +141,8 @@ import type { TabsPaneContext } from 'element-plus/es/components/tabs/src/consta
 import { useUserStore } from './stores/userStore'
 import { useLoginStore } from './stores/loginState'
 
+//人物卡片
+import personCard from '@/components/utils/personCard.vue'
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
 //用户名称

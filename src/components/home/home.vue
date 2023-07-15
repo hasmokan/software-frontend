@@ -160,9 +160,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <i class="iconfont icon-qianbi">资产查询</i>
-              <i class="iconfont icon-yinhang"></i> -->
                 </div>
             </div>
         </div>
