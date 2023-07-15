@@ -4,7 +4,7 @@
             <el-container>
                 <el-header>
                     <el-menu
-                        :default-active="activeIndex2"
+                        :default-active="componentState.activeIndex2"
                         class="el-menu-demo"
                         mode="horizontal"
                         background-color="#545c64"
@@ -209,7 +209,7 @@
             </el-container>
         </div>
 
-        <el-dialog v-model="centerDialogVisible" width="410px" center>
+        <el-dialog v-model="componentState.centerDialogVisible" width="410px" center>
             <template #header="{ close, titleId, titleClass }">
                 <div class="my-header" style="margin-left: 200px">
                     <h4 :id="titleId" :class="titleClass" style="font-size: 14px; color: gray">
@@ -218,18 +218,35 @@
                     </h4>
                 </div>
             </template>
-            <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+            <el-tabs v-model="componentState.activeName" class="demo-tabs" @tab-click="handleClick">
                 <el-tab-pane label="登陆" name="first">
-                    <el-input v-model="input" placeholder="账号/用户名" />
-                    <el-input v-model="input" type="password" placeholder="密码" show-password />
-                    <div class="forget-password">忘记密码</div>
-                    <el-button type="primary" @click="handlePersonalLogin"> 登陆 </el-button>
+                    <el-input v-model="loginData.accountNumber" placeholder="账号/用户名" />
+                    <el-input
+                        v-model="loginData.password"
+                        type="password"
+                        placeholder="密码"
+                        show-password
+                    />
+                    <div class="forget-password" style="cursor: pointer">忘记密码</div>
+                    <el-button type="primary" @click="handlePersonalLogin"> 登录 </el-button>
                 </el-tab-pane>
                 <el-tab-pane label="注册" name="second">
-                    <el-input v-model="input" placeholder="账号/用户名" />
-                    <el-input v-model="input" type="password" placeholder="密码" show-password />
-                    <div class="forget-password">忘记密码</div>
-                    <el-button type="primary" @click="handlePersonalRegister"> 注册 </el-button>
+                    <el-input v-model="registerData.accountNumber" placeholder="账号/用户名" />
+                    <el-input
+                        v-model="registerData.password"
+                        type="password"
+                        placeholder="密码"
+                        show-password
+                    />
+                    <el-input
+                        v-model="registerData.phoneNumber"
+                        type="password"
+                        placeholder="手机号"
+                        show-password
+                    />
+                    <el-input v-model="registerData.idNumber" placeholder="ID" />
+                    <div class="forget-password" style="cursor: pointer">忘记密码</div>
+                    <el-button type="primary" @click="handlePersonalLogin"> 注册 </el-button>
                 </el-tab-pane>
             </el-tabs>
         </el-dialog>
@@ -239,6 +256,7 @@
 <script lang="ts" setup>
 //设置导航激活
 import { ref } from 'vue'
+import { reactive } from 'vue'
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import type { TabsPaneContext } from 'element-plus/es/components/tabs/src/constants'
@@ -254,40 +272,57 @@ import {
 } from '@/router/linkTo'
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
-
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
 //用户名称
 const userName = ref(useUserStore().userId)
-//导航栏
-const activeIndex2 = ref('1')
+//登陆注册数据
+const loginData = reactive({
+    accountNumber: '', //账号名
+    password: '' //密码
+})
+const registerData = reactive({
+    accountNumber: '',
+    password: '',
+    phoneNumber: '',
+    idNumber: ''
+})
 
+const userInfo = reactive({
+    userName: userName.value
+})
+const state = reactive({
+    loginState: loginState.value
+})
+
+const componentState = reactive({
+    activeIndex2: '1', //导航栏标记位
+    centerDialogVisible: false, //登录注册对话框控制位
+    activeName: 'first' //标签页
+})
+/*********************************************************************** */
 //登录注册对话框
-const centerDialogVisible = ref(false)
 const handleSelect = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
 }
 
-const input = ref('')
 //登陆事件
 const PersonalLoginClick = () => {
-    centerDialogVisible.value = true
+    componentState.centerDialogVisible = true
 }
 //处理个人登陆
 const handlePersonalLogin = () => {
-    centerDialogVisible.value = false
+    componentState.centerDialogVisible = false
     loginState.value = true
 }
 //处理个人注册
 const handlePersonalRegister = () => {}
 const EnterpriseLoginClick = () => {}
+
 //处理账号注销
 const handleChangeLoginState = () => {
     loginState.value = false
 }
-
-//标签页
-const activeName = ref('first')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
     console.log(tab, event)
