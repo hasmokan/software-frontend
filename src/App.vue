@@ -54,7 +54,11 @@
                                 </template>
                             </el-dropdown>
                         </div>
-                        <personCard :loginState="loginState" :userName="userName"></personCard>
+                        <personCard
+                            @change-login-state="handleChangeLoginState"
+                            v-model:loginState="loginState"
+                            :userName="userName"
+                        ></personCard>
                         <!-- 搜索框 -->
                         <div class="search">
                             <el-input placeholder="Please input" class="input-with-select">
@@ -143,6 +147,7 @@ import { useLoginStore } from './stores/loginState'
 
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
+
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
 //用户名称
@@ -161,14 +166,18 @@ const input = ref('')
 const PersonalLoginClick = () => {
     centerDialogVisible.value = true
 }
-
+//处理个人登陆
 const handlePersonalLogin = () => {
     centerDialogVisible.value = false
     loginState.value = true
 }
-
+//处理个人注册
 const handlePersonalRegister = () => {}
 const EnterpriseLoginClick = () => {}
+//处理账号注销
+const handleChangeLoginState = () => {
+    loginState.value = false
+}
 
 //标签页
 const activeName = ref('first')

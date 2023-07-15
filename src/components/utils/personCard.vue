@@ -1,6 +1,5 @@
 <template>
     <span
-        v-click
         v-show="loginState"
         style="
             width: 200px;
@@ -20,27 +19,29 @@
                 ><ArrowUp
             /></el-icon>
         </div>
+        <transition name="el-zoom-in-top">
+            <div class="personCard" v-show="openCard" v-clickoutside="handleclickoutside">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="@/assets/img/logo.png" />
+                    </div>
 
-        <div class="personCard" v-show="openCard" v-clickoutside="handleclickoutside">
-            <div class="card">
-                <div class="imgBx">
-                    <img src="@/assets/img/logo.png" />
-                </div>
-                <div class="content">
-                    <div class="details">
-                        <h2>{{ userName }}<br /><span>尊贵的五星vip客户您好</span></h2>
-                        <div class="data">
-                            <h3>5<br /><span>客户等级</span></h3>
-                            <h3>{{ cardNumber }}<br /><span>银行卡数量</span></h3>
-                            <h3>2年6月<br /><span>使用时长</span></h3>
-                        </div>
-                        <div class="actionBtn">
-                            <button>注销</button>
+                    <div class="content">
+                        <div class="details">
+                            <h2>{{ userName }}<br /><span>尊贵的五星vip客户您好</span></h2>
+                            <div class="data">
+                                <h3>5<br /><span>客户等级</span></h3>
+                                <h3>{{ cardNumber }}<br /><span>银行卡数量</span></h3>
+                                <h3>2年6月<br /><span>使用时长</span></h3>
+                            </div>
+                            <div class="actionBtn">
+                                <button @click="handleClickCancel">注销</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </transition>
     </span>
 </template>
 
@@ -53,8 +54,10 @@ defineProps({
     loginState: Boolean,
     cardNumber: Number
 })
+const emit = defineEmits<{
+    (e: 'changeLoginState', loginState: boolean): void
+}>()
 const openCard = ref(false)
-
 const handleOver = () => {
     openCard.value = true
 }
@@ -66,9 +69,13 @@ const handleLeft = () => {
 const handleclickoutside = () => {
     openCard.value = false
 }
+
+const handleClickCancel = () => {
+    openCard.value = false
+    emit('changeLoginState', false)
+}
 </script>
 
 <style lang="scss" scoped>
 @import './utilCss/personCard.scss';
 </style>
-@/toolutils/click-outside
