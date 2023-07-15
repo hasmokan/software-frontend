@@ -203,6 +203,7 @@
                                     <span style="margin-left: 50px">银行编号：2021117号</span>
                                 </span>
                             </div>
+                            <img src="@/assets/img/xbdx.png" alt="" class="right-img" />
                         </div>
                     </div>
                 </el-footer>
