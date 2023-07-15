@@ -117,7 +117,7 @@
                     </div>
                     <div class="body">
                         <div class="one">
-                            <i class="iconfont icon-team"></i>
+                            <div><i class="iconfont icon-team"></i></div>
                             <h3 class="team">我们的团队</h3>
                             <ul>
                                 <li>团队成员详情</li>
@@ -128,7 +128,7 @@
                             </ul>
                         </div>
                         <div class="two">
-                            <i class="iconfont icon-dianhua"></i>
+                            <div><i class="iconfont icon-dianhua"></i></div>
                             <h3 class="connect">联系我们</h3>
                             <ul>
                                 <li>客户服务</li>
@@ -139,7 +139,7 @@
                             </ul>
                         </div>
                         <div class="three">
-                            <i class="iconfont icon-falv"></i>
+                            <div><i class="iconfont icon-falv"></i></div>
                             <h3 class="lawInformation">法律信息</h3>
                             <ul>
                                 <li>服务协议</li>
@@ -150,7 +150,7 @@
                             </ul>
                         </div>
                         <div class="four">
-                            <i class="iconfont icon-jishufuwu"></i>
+                            <div><i class="iconfont icon-jishufuwu"></i></div>
                             <h3 class="support">技术支持</h3>
                             <ul>
                                 <li>Vue框架</li>
@@ -203,7 +203,6 @@
                                     <span style="margin-left: 50px">银行编号：2021117号</span>
                                 </span>
                             </div>
-                            <img src="@/assets/img/xbdx.png" alt="" class="right-img" />
                         </div>
                     </div>
                 </el-footer>

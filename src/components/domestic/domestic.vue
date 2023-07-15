@@ -3,12 +3,13 @@
         <img class="headimg" src="@/assets/img/international-img.jpg" alt="" />
 
         <div class="centerbody">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>国内标准</el-breadcrumb-item>
-            </el-breadcrumb>
             <div class="wrapper">
-                <div class="card">
+                <el-breadcrumb separator="/">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item>国内标准</el-breadcrumb-item>
+                </el-breadcrumb>
+
+                <div style="margin-top: 40px" class="card">
                     <div class="card-text">
                         <div class="card-text-head">
                             <strong>GB/T 39604-2020《社会责任管理体系 要求及使用指南》</strong>

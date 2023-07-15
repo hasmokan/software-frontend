@@ -59,7 +59,8 @@
                 }
             }
             .flexbox {
-                font-family: 'DingTalkJinBuTi-Regular';
+                cursor: default;
+                font-family: "DingTalkJinBuTi-Regular";
                 margin: 0 auto;
                 display: flex;
                 justify-content: center;
@@ -67,7 +68,7 @@
                 width: 80%;
                 li {
                     font-weight: 900;
-                    font-family: 'AlimamaFangYuanTiVF-Thin';
+                    font-family: "AlimamaFangYuanTiVF-Thin";
                 }
             }
         }
@@ -87,7 +88,7 @@
     li {
         font-weight: lighter; //为啥不起作用
         line-height: 2em;
-        font-family: 'SimHei';
+        font-family: "SimHei";
         text-align: left;
         // list-style-type: none;
         margin: 0 auto;
@@ -104,6 +105,7 @@
 .succ {
     margin-top: 100px;
     &-header {
+        cursor: default;
         width: 100%;
         height: 200px;
         display: flex;
@@ -111,8 +113,8 @@
         align-items: center;
         position: relative;
         &::after {
-            content: '';
-            background: url('@/assets/img/greybackground.jpg');
+            content: "";
+            background: url("@/assets/img/greybackground.jpg");
             opacity: 0.2;
             top: 0;
             left: 0;
@@ -130,7 +132,7 @@
             background-color: rgb(255, 165, 5);
         }
         &-text {
-            font-family: 'SimHei';
+            font-family: "SimHei";
             font-size: 40px;
             text-align: center;
             margin-top: 30px;
@@ -164,7 +166,7 @@
                 padding-left: 10px;
                 height: 32px;
                 border-left: 10px solid rgb(255, 165, 5);
-                font-family: 'SimHei';
+                font-family: "SimHei";
                 font-size: 31px;
                 margin: 0 auto;
             }
@@ -178,7 +180,7 @@
             font-size: 14px;
             height: 53px;
             width: 319px;
-            background: url('@/assets/img/label.png');
+            background: url("@/assets/img/label.png");
         }
     }
     .flex-bottom-box {
@@ -228,57 +230,57 @@
     }
 }
 
-.div1{
+.div1 {
     font-size: 26px;
     font-style: italic;
     font-weight: bold;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: #909090;
-    position:absolute;/* 绝对定位 */
+    position: absolute; /* 绝对定位 */
     top: 35px;
-    left:200px;
-    z-index:5;
-  }
-  .div2{
+    left: 200px;
+    z-index: 5;
+}
+.div2 {
     font-size: 15px;
-    position:absolute;
+    position: absolute;
     left: 480px;
-    z-index:8;
-  }
-  .div3{
+    z-index: 8;
+}
+.div3 {
     font-size: 15px;
-    position:absolute;
-    left:830px;
-    z-index:8;
-  }
-  .div4{
+    position: absolute;
+    left: 830px;
+    z-index: 8;
+}
+.div4 {
     font-size: 15px;
-    position:absolute;
-    left:1180px;
-    z-index:8;
-  }
-  .diagonal-line {
-    position: absolute;  /* 设置相对定位 */
-    left:280px;
-    bottom:45px;
-    width: 65px;  /* 设置宽度 */
-    height: 2px;  /* 设置高度 */
-    background-color: #cccccc;  /* 设置斜线颜色 */
-    transform: rotate(120deg);  /* 通过旋转实现斜线效果 */
-    transform-origin: center  ;  /* 设置旋转的原点位置 */
-  }
-  .img4{
+    position: absolute;
+    left: 1180px;
+    z-index: 8;
+}
+.diagonal-line {
+    position: absolute; /* 设置相对定位 */
+    left: 280px;
+    bottom: 45px;
+    width: 65px; /* 设置宽度 */
+    height: 2px; /* 设置高度 */
+    background-color: #cccccc; /* 设置斜线颜色 */
+    transform: rotate(120deg); /* 通过旋转实现斜线效果 */
+    transform-origin: center; /* 设置旋转的原点位置 */
+}
+.img4 {
     position: absolute;
     box-shadow: 0 0 5px rgb(255, 255, 255);
-    left:400px;
-  }
-  .img5{
+    left: 400px;
+}
+.img5 {
     position: absolute;
     box-shadow: 0 0 5px rgb(255, 255, 255);
-    left:750px;
-  }
-  .img6{
+    left: 750px;
+}
+.img6 {
     position: absolute;
     box-shadow: 0 0 5px rgb(255, 255, 255);
-    left:1100px;
-  }
+    left: 1100px;
+}
