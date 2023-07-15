@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-13 18:14:10
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-14 14:07:19
+ * @LastEditTime: 2023-07-15 09:45:46
  * @FilePath: \frontend\src\components\international\international.vue
  * @Description: 
 -->
@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import img1 from '/assets/img/international-img.jpg'
+import img1 from '@/assets/img/international-img.jpg'
 
 import { computed, ref } from 'vue'
 
@@ -167,5 +167,5 @@ const tableData = ref<user[]>([
 </script>
 
 <style lang="scss" scoped>
-@import './international.scss';
+@import './card.scss';
 </style>

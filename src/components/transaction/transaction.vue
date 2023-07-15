@@ -1,11 +1,11 @@
 <template>
     <div class="internationnal">
-        <img class="headimg" src="/assets/img/ESG-img.jpg" alt="" />
+        <img class="headimg" src="@/assets/img/ESG-img.jpg" alt="" />
 
         <div class="centerbody">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>ESG报告分析</el-breadcrumb-item>
+                <el-breadcrumb-item>银行业务</el-breadcrumb-item>
             </el-breadcrumb>
 
             <div class="wrapper">
@@ -142,5 +142,5 @@ const submitUpload = () => {
 </script>
 
 <style lang="scss" scoped>
-@import './esg.scss';
+@import './transaction.scss';
 </style>

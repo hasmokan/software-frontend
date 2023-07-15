@@ -13,27 +13,30 @@
                         @select="handleSelect"
                     >
                         <img
-                            src="/assets/img/logo.png"
-                            style="width: 50px; height: 50px; margin-right: 200px"
+                            src="@/assets/img/logo.png"
+                            style="margin-left: 10px; width: 50px; height: 50px"
                         />
+                        <div class="text-hasmokan">西北银行</div>
+                        <div class="flex-grow" />
                         <el-menu-item index="1">
                             <router-link to="/">首页</router-link>
                         </el-menu-item>
 
                         <el-sub-menu index="2">
                             <template #title>银行业务</template>
-
                             <el-menu-item index="2-1">
-                                <router-link to="/esg">人民币储蓄存款</router-link>
+                                <router-link to="/transaction">银行卡办理</router-link>
                             </el-menu-item>
-                            <el-menu-item index="2-2"></el-menu-item>
-                            <el-menu-item index="2-3">item three</el-menu-item>
+                            <el-menu-item index="2-2"> 资金转账 </el-menu-item>
+                            <el-menu-item index="2-3"> 资产查询 </el-menu-item>
+                            <el-menu-item index="2-4"> 资产存款 </el-menu-item>
+                            <el-menu-item index="2-5"> 资产存款 </el-menu-item>
                         </el-sub-menu>
                         <el-menu-item index="3">
                             <router-link to="/domestic">ESG国内标准</router-link>
                         </el-menu-item>
                         <el-menu-item index="4">
-                            <router-link to="/international">账户管理</router-link>
+                            <router-link to="/card">银行卡管理</router-link>
                         </el-menu-item>
                         <!-- 下拉 登陆按钮-->
                         <div v-show="!loginState" class="flex flex-wrap items-center">
@@ -121,7 +124,7 @@
                 <div class="my-header" style="margin-left: 200px">
                     <h4 :id="titleId" :class="titleClass" style="font-size: 14px; color: gray">
                         终于等到你~
-                        <img src="public/assets/img/logo.png" alt="" style="width: 40px" />
+                        <img src="@/assets/img/logo.png" alt="" style="width: 40px" />
                     </h4>
                 </div>
             </template>
@@ -214,9 +217,48 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
             format('woff2');
 }
 
+@font-face {
+    font-family: AlimamaShuHeiTi-Bold;
+    src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold/AlimamaShuHeiTi-Bold.eot)
+            format('embedded-opentype'),
+        url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold/AlimamaShuHeiTi-Bold.otf)
+            format('opentype'),
+        url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold/AlimamaShuHeiTi-Bold.ttf)
+            format('TrueType'),
+        url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold/AlimamaShuHeiTi-Bold.woff)
+            format('woff'),
+        url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold/AlimamaShuHeiTi-Bold.woff2)
+            format('woff2');
+}
+
 .el-menu {
     font-family: AlimamaFangYuanTiVF-Thin;
+    /*-------text -----*/
+    .text-hasmokan {
+        font-family: AlimamaShuHeiTi-Bold;
+        font-size: 30px;
+        background-image: linear-gradient(15deg, darkgoldenrod, white, gold);
+        background-size: 500%;
+        margin-left: 10px;
+        display: initial;
+        -webkit-background-clip: text;
+        white-space: nowrap;
+        color: transparent;
+        animation: bgAnimation 10s linear infinite;
+    }
+    @keyframes bgAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 }
+
 .el-dialog {
     :deep(.my-header) {
         width: 100%;
