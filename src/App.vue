@@ -78,31 +78,117 @@
                     </transition>
                 </router-view>
 
-                <el-footer height="200px">
-                    <div class="left">
-                        <div class="left-box">
-                            <ul>
-                                <li>使用条款</li>
-                                <li>法律声明</li>
-                                <li>个人信息保护方针</li>
-                                <li>举报政策</li>
-                            </ul>
+                <el-footer height="630px">
+                    <div class="top">
+                        <div class="top-left">
+                            <div class="about">关于我们</div>
                         </div>
-                        <div class="left-icon">
-                            <el-icon :size="30" color="rgb(255, 165, 5)"><PhoneFilled /></el-icon>
-                            <el-icon :size="30" color="rgb(255, 165, 5)"
-                                ><LocationFilled
-                            /></el-icon>
-                            <el-icon :size="30" color="rgb(255, 165, 5)"><ChromeFilled /></el-icon>
+                        <div class="top-icon">
+                            <i class="iconfont icon-weibo"></i>
+                            <i class="iconfont icon-QQ"></i>
+                            <i class="iconfont icon-weixin"></i>
+                            <i class="iconfont icon-douyin"></i>
+                        </div>
+                        <div class="logo">
+                            <img
+                                src="/src/assets/img/logo.png"
+                                style="
+                                    width: 80px;
+                                    height: 80px;
+                                    margin-left: 350px;
+                                    margin-top: 10px;
+                                "
+                            />
                         </div>
                     </div>
-                    <div class="right">
-                        <div class="imgbox">
-                            <div class="code">
-                                <img src="/assets/img/code.png" alt="" class="right-code" />
-                                <div class="right-text">扫码联系我们</div>
+                    <div class="body">
+                        <div class="one">
+                            <i class="iconfont icon-team"></i>
+                            <h3 class="team">我们的团队</h3>
+                            <ul>
+                                <li>团队成员详情</li>
+                                <li>团队分工介绍</li>
+                                <li>......</li>
+                                <li>......</li>
+                                <li>......</li>
+                            </ul>
+                        </div>
+                        <div class="two">
+                            <i class="iconfont icon-dianhua"></i>
+                            <h3 class="connect">联系我们</h3>
+                            <ul>
+                                <li>客户服务</li>
+                                <li>合作洽谈</li>
+                                <li>媒体及投资者</li>
+                                <li>.....</li>
+                                <li>.....</li>
+                            </ul>
+                        </div>
+                        <div class="three">
+                            <i class="iconfont icon-falv"></i>
+                            <h3 class="lawInformation">法律信息</h3>
+                            <ul>
+                                <li>服务协议</li>
+                                <li>隐私政策</li>
+                                <li>知识产权</li>
+                                <li>.....</li>
+                                <li>.....</li>
+                            </ul>
+                        </div>
+                        <div class="four">
+                            <i class="iconfont icon-jishufuwu"></i>
+                            <h3 class="support">技术支持</h3>
+                            <ul>
+                                <li>Vue框架</li>
+                                <li>锲而不舍</li>
+                                <li>.....</li>
+                                <li>.....</li>
+                                <li>.....</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bottom-up">
+                            <div class="advise">
+                                <span>NWB团队倾情打造的银行系统！</span><br />
+                                <span>24小时为您提供最方便快捷的银行服务!</span><br />
+                                <span>如您有更好的提议，欢迎联系我们！</span>
                             </div>
-                            <img src="/assets/img/xbdx.png" alt="" class="right-img" />
+                            <div class="img" style="margin-top: 10px; margin-left: 600px">
+                                <div class="imgbox">
+                                    <img
+                                        src="/src/assets/img/code.png"
+                                        style="height: 80px; width: 80px; margin-top: 10px"
+                                    />
+                                    <img
+                                        src="/src/assets/img/xbdximg.png"
+                                        style="
+                                            height: 80px;
+                                            width: 80px;
+                                            margin-left: 80px;
+                                            margin-top: 10px;
+                                        "
+                                    />
+                                    <img
+                                        src="/src/assets/img/xbdxname.png"
+                                        style="
+                                            height: 30px;
+                                            width: 150px;
+                                            margin-left: 80px;
+                                            margin-bottom: 25px;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom-bottom">
+                            <div class="left" style="margin-top: 20px">
+                                <span style="color: #e2e2e2; font-style: text/css">
+                                    <span>@2023NWB银行</span>
+                                    <span style="margin-left: 50px">CHINA-NO.1</span>
+                                    <span style="margin-left: 50px">银行编号：2021117号</span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </el-footer>
