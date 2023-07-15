@@ -4,11 +4,11 @@
 .personCard {
     z-index: 99;
     position: absolute;
-    top: 90px;
-    right: 35px;
+    top: 50px;
+    left: -55px;
     .card {
         position: relative;
-        width: 200px;
+        width: 250px;
         height: 190px;
         /* height: 450px; */
         background: #fff;
@@ -18,16 +18,17 @@
     }
 
     .card:hover {
-        height: 450px;
+        height: 350px;
+        width: 250px;
     }
 
     .imgBx {
         position: absolute;
         left: 50%;
-        top: -50px;
+        top: -10px;
         transform: translateX(-50%);
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         background: #fff;
         border-radius: 20px;
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
@@ -36,8 +37,8 @@
     }
 
     .card:hover .imgBx {
-        width: 250px;
-        height: 250px;
+        width: 120px;
+        height: 120px;
     }
 
     .imgBx img {
@@ -104,18 +105,24 @@
     }
 
     .card .content .details .actionBtn {
-        display: flex;
-        justify-content: space-between;
+        button {
+            width: 200px;
+        }
+
+        // display: flex;
+        // justify-content: space-between;
     }
 
     .card .content .details .actionBtn button {
+        font-weight: bolder;
+        font-family: AlimamaFangYuanTiVF-Thin;
         padding: 10px 30px;
         border-radius: 5px;
         border: none;
         outline: none;
         font-size: 1em;
         font-weight: 500;
-        background: #ff5f95;
+        background-color: rgb(255, 165, 5);
         color: #fff;
         cursor: pointer;
     }

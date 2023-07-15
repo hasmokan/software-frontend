@@ -1,5 +1,6 @@
 <template>
     <span
+        v-click
         v-show="loginState"
         style="
             width: 200px;
@@ -12,15 +13,15 @@
             position: relative;
         "
     >
-        <div style="color: gold; position: relative" @mouseover="handleOver">
-            <div style="display: flex">
-                <div style="color: white">您好，尊敬的</div>
-                &ensp;{{ userName }}
-            </div>
-            <el-icon style="font-size: larger; position: absolute; right: 50%"><ArrowUp /></el-icon>
+        <div style="color: gold; position: relative; display: flex" @mouseover="handleOver">
+            <div style="color: white">您好，尊敬的</div>
+            &ensp;{{ userName }}
+            <el-icon style="font-size: larger; margin-left: 5px; line-height: 16px"
+                ><ArrowUp
+            /></el-icon>
         </div>
 
-        <div class="personCard" v-show="openCard">
+        <div class="personCard" v-show="openCard" v-clickoutside="handleclickoutside">
             <div class="card">
                 <div class="imgBx">
                     <img src="@/assets/img/logo.png" />
@@ -29,9 +30,9 @@
                     <div class="details">
                         <h2>{{ userName }}<br /><span>尊贵的五星vip客户您好</span></h2>
                         <div class="data">
-                            <h3>100h<br /><span>使用时长</span></h3>
+                            <h3>5<br /><span>客户等级</span></h3>
                             <h3>{{ cardNumber }}<br /><span>银行卡数量</span></h3>
-                            <h3>285<br /><span>Following</span></h3>
+                            <h3>2年6月<br /><span>使用时长</span></h3>
                         </div>
                         <div class="actionBtn">
                             <button>注销</button>
@@ -45,9 +46,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { ClickOutside as vClickoutside } from 'element-plus'
+
 defineProps({
     userName: String,
-    loginState: Number,
+    loginState: Boolean,
     cardNumber: Number
 })
 const openCard = ref(false)
@@ -59,8 +62,13 @@ const handleOver = () => {
 const handleLeft = () => {
     openCard.value = false
 }
+
+const handleclickoutside = () => {
+    openCard.value = false
+}
 </script>
 
 <style lang="scss" scoped>
 @import './utilCss/personCard.scss';
 </style>
+@/toolutils/click-outside

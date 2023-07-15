@@ -41,6 +41,11 @@
         margin-left: 50px;
         margin-right: 50px;
     }
+    .flex {
+        display: flex;
+        justify-content: center;
+        width: 250px;
+    }
     .flex-grow {
         flex-grow: 1;
     }
