@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-14 08:20:45
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-15 23:49:42
+ * @LastEditTime: 2023-07-16 01:09:04
  * @FilePath: \frontend\src\axios\axios.ts
  * @Description: axios基础封装
  * 包括基础配置，url和超时时间
@@ -11,6 +11,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosResponse } from 'axios'
 import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
+import { ElMessage } from 'element-plus'
 type Result<T> = {
     code: number
     message: string
@@ -22,7 +23,7 @@ export class Request {
     // axios 实例
     instance: AxiosInstance
     // 基础配置，url和超时时间
-    baseConfig: AxiosRequestConfig = { baseURL: '/api', timeout: 60000 }
+    baseConfig: AxiosRequestConfig = { baseURL: 'http://localhost:8080', timeout: 60000 }
 
     constructor(config: AxiosRequestConfig) {
         // 使用axios.create创建axios实例
@@ -93,11 +94,11 @@ export class Request {
                 }
                 // 这里错误消息可以使用全局弹框展示出来
                 // 比如element plus 可以使用 ElMessage
-                // ElMessage({
-                //   showClose: true,
-                //   message: `${message}，请检查网络或联系管理员！`,
-                //   type: "error",
-                // });
+                ElMessage({
+                    showClose: true,
+                    message: `${message}，请检查网络或联系管理员！`,
+                    type: 'error'
+                })
                 // 这里是AxiosError类型，所以一般我们只reject我们需要的响应即可
                 return Promise.reject(err.response)
             }

@@ -10,7 +10,6 @@
                         background-color="#545c64"
                         text-color="#fff"
                         active-text-color="#ffd04b"
-                        @select="handleSelect"
                     >
                         <img
                             src="@/assets/img/logo.png"
@@ -218,7 +217,7 @@
                     </h4>
                 </div>
             </template>
-            <el-tabs v-model="componentState.activeName" class="demo-tabs" @tab-click="handleClick">
+            <el-tabs v-model="componentState.activeName" class="demo-tabs">
                 <el-tab-pane label="登陆" name="first">
                     <el-input v-model="loginData.accountNumber" placeholder="账号/用户名" />
                     <el-input
@@ -246,7 +245,7 @@
                     />
                     <el-input v-model="registerData.idNumber" placeholder="ID" />
                     <div class="forget-password" style="cursor: pointer">忘记密码</div>
-                    <el-button type="primary" @click="handlePersonalLogin"> 注册 </el-button>
+                    <el-button type="primary" @click="handlePersonalRegister"> 注册 </el-button>
                 </el-tab-pane>
             </el-tabs>
         </el-dialog>
@@ -270,8 +269,11 @@ import {
     handleClickTransaction,
     handleClickWithdrawal
 } from '@/router/linkTo'
+//axios
+import axios from '@/axios/axios'
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
+
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
 //用户名称
@@ -301,31 +303,50 @@ const componentState = reactive({
     activeName: 'first' //标签页
 })
 /*********************************************************************** */
-//登录注册对话框
-const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
-}
 
-//登陆事件
+//登录事件
 const PersonalLoginClick = () => {
     componentState.centerDialogVisible = true
 }
-//处理个人登陆
+
+//处理个人登录
 const handlePersonalLogin = () => {
-    componentState.centerDialogVisible = false
-    loginState.value = true
+    axios
+        .post('/login', {
+            accountNumber: loginData.accountNumber,
+            password: loginData.password
+        })
+        .then(function (response) {
+            console.log(response.data)
+            loginState.value = true
+            componentState.centerDialogVisible = false
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
 }
+
 //处理个人注册
-const handlePersonalRegister = () => {}
+const handlePersonalRegister = () => {
+    axios
+        .post('/signup', {
+            accountNumber: registerData.accountNumber,
+            password: registerData.password,
+            phoneNumber: registerData.phoneNumber,
+            idNumber: registerData.idNumber
+        })
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+}
 const EnterpriseLoginClick = () => {}
 
 //处理账号注销
 const handleChangeLoginState = () => {
     loginState.value = false
-}
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-    console.log(tab, event)
 }
 </script>
 <style lang="scss" scoped>
