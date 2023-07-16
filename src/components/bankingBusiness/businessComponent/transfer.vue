@@ -1,5 +1,24 @@
 <template>
-    <el-form ref="form" :model="sizeForm" label-width="auto" :label-position="labelPosition">
+    <div>
+        <el-radio-group v-model="size" label="size control">
+            <el-radio-button label="large">字体+</el-radio-button>
+            <el-radio-button label="default">默认字体</el-radio-button>
+            <el-radio-button label="small">字体-</el-radio-button>
+        </el-radio-group>
+        <el-radio-group v-model="labelPosition" label="position control">
+            <el-radio-button label="left">左</el-radio-button>
+            <el-radio-button label="right">右</el-radio-button>
+            <el-radio-button label="top">上</el-radio-button>
+        </el-radio-group>
+    </div>
+    <br />
+    <el-form
+        ref="form"
+        :model="sizeForm"
+        label-width="auto"
+        :label-position="labelPosition"
+        :size="size"
+    >
         <el-form-item label="Activity name">
             <el-input v-model="sizeForm.name" />
         </el-form-item>
@@ -50,10 +69,9 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { EpPropMergeType } from 'element-plus/es/utils/vue/props/types'
-const labelPosition = ref<
-    EpPropMergeType<StringConstructor, 'top' | 'right' | 'left', unknown> | undefined
->('top')
+
+const size = ref('default')
+const labelPosition = ref('top')
 
 const sizeForm = reactive({
     name: '',

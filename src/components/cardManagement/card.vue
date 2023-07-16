@@ -13,7 +13,7 @@
         <div class="container">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>银行卡管理</el-breadcrumb-item>
+                <el-breadcrumb-item>账户管理</el-breadcrumb-item>
             </el-breadcrumb>
 
             <el-table :data="filterTableData" style="width: 100%">

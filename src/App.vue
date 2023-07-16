@@ -283,7 +283,7 @@
 <script lang="ts" setup>
 //设置导航激活
 import { ref } from 'vue'
-import { reactive, nextTick } from 'vue'
+import { reactive } from 'vue'
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import type { TabsPaneContext } from 'element-plus/es/components/tabs/src/constants'
@@ -379,7 +379,6 @@ const handlePersonalLogin = () => {
                     userInfo.idNumber = useUserStore().idNumber
                     userInfo.password = loginData.password
                 }
-                nextTick()
             } else {
                 state.isLoginCorrect = 'false'
             }
