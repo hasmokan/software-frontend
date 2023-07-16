@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-16 14:45:04
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-16 16:10:02
+ * @LastEditTime: 2023-07-16 16:38:51
  * @FilePath: \frontend\src\components\cardManagement\openCard.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -27,10 +27,10 @@
                 <el-form-item label="您用于办理银行卡的身份证号是">
                     {{ sizeForm.idNumber }}
                 </el-form-item>
-                <el-form-item label="Activity name">
+                <el-form-item label="您的手机号">
                     <el-input v-model="sizeForm.phoneNumber" />
                 </el-form-item>
-                <el-form-item label="Activity name">
+                <el-form-item label="您用于交易的密码">
                     <el-input v-model="sizeForm.transactionPassword" />
                 </el-form-item>
                 <el-form-item>
@@ -76,6 +76,8 @@ function onSubmit() {
         })
         .then((response) => {
             let result: openCardInfoResponse = response.data as unknown as openCardInfoResponse
+            console.log(response);
+            
             if (result.code == 0) {
                 ElMessage({
                     message: '银行卡办理成功！',

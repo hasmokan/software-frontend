@@ -83,14 +83,14 @@
                         </el-upload>
                     </el-form-item>
                     <!-- <el-form-item label="ESG新闻信息">
-            <el-radio-group v-model="form.resource">
-              <el-radio label="Sponsor" />
-              <el-radio label="Venue" />
-            </el-radio-group>
-          </el-form-item>
-          <el-form-item label="公司发展战略">
-            <el-input v-model="form.desc" type="textarea" />
-          </el-form-item> -->
+                    <el-radio-group v-model="form.resource">
+                    <el-radio label="Sponsor" />
+                    <el-radio label="Venue" />
+                    </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="公司发展战略">
+                        <el-input v-model="form.desc" type="textarea" />
+                    </el-form-item> -->
                     <el-form-item>
                         <el-button type="primary" @click="onSubmit">Create</el-button>
                         <el-button>Cancel</el-button>

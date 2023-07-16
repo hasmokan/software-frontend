@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-15 20:26:29
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-16 14:40:03
+ * @LastEditTime: 2023-07-16 16:19:36
  * @FilePath: \frontend\src\components\bankingBusiness\bankingBusiness.vue
  * @Description: 银行业务 -->
 <template>
@@ -27,7 +27,7 @@
                     </template>
                 </el-skeleton>
             </el-tab-pane>
-            <el-tab-pane label="存款" name="doposit">
+            <el-tab-pane label="存款" name="deposit">
                 3
                 <el-skeleton />
                 <br />
@@ -37,7 +37,7 @@
                     </template>
                 </el-skeleton>
             </el-tab-pane>
-            <el-tab-pane label="取款" name="withdrawl">
+            <el-tab-pane label="取款" name="withdrawal">
                 4
                 <el-skeleton />
                 <br />
@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import { useRouterStore } from '@/stores/routerState'
 import Transfer from './businessComponent/transfer.vue'
@@ -60,6 +60,12 @@ const state = reactive({
     activeName: useRouterStore().getPath
 })
 
+watch(
+    () => useRouterStore().getPath,
+    () => {
+        state.activeName = useRouterStore().getPath
+    }
+)
 const handleClick = (tab: TabsPaneContext, event: Event) => {
     console.log(tab, event)
 }
