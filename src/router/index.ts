@@ -2,17 +2,18 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-13 18:14:10
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-15 20:33:50
+ * @LastEditTime: 2023-07-16 15:08:22
  * @FilePath: \frontend\src\router\index.ts
  * @Description: 导航
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw, createWebHistory } from 'vue-router'
+import cardapply from '../components/cardManagement/openCard.vue'
 import home from '../components/home/home.vue'
 import transaction from '../components/transaction/transaction.vue'
 import card from '../components/cardManagement/card.vue'
 import deme from '../components/domestic/domestic.vue'
 import bankbusiness from '../components/bankingBusiness/bankingBusiness.vue'
-import cardapply from '../components/cardManagement/bankOpenAccount.vue'
+
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
