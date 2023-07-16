@@ -70,7 +70,7 @@
                         <personCard
                             @change-login-state="handleChangeLoginState"
                             v-model:loginState="loginState"
-                            :userName="userName"
+                            :userName="userInfo.accountNumber"
                         ></personCard>
                         <!-- 搜索框 -->
                         <div class="search">
@@ -226,6 +226,20 @@
                         placeholder="密码"
                         show-password
                     />
+                    <div
+                        class="label"
+                        v-if="state.isLoginCorrect == 'true'"
+                        style="color: greenyellow"
+                    >
+                        <el-icon><CircleCheck /></el-icon>登陆成功
+                    </div>
+                    <div
+                        class="label"
+                        v-else-if="state.isLoginCorrect == 'false'"
+                        style="color: red"
+                    >
+                        用户名或密码错误
+                    </div>
                     <div class="forget-password" style="cursor: pointer">忘记密码</div>
                     <el-button type="primary" @click="handlePersonalLogin"> 登录 </el-button>
                 </el-tab-pane>
@@ -244,6 +258,20 @@
                         show-password
                     />
                     <el-input v-model="registerData.idNumber" placeholder="ID" />
+                    <div
+                        class="label"
+                        v-if="state.isSignupCorrect == 'true'"
+                        style="color: greenyellow"
+                    >
+                        <el-icon><CircleCheck /></el-icon>注册成功
+                    </div>
+                    <div
+                        class="label"
+                        v-else-if="state.isSignupCorrect == 'false'"
+                        style="color: red"
+                    >
+                        用户名已存在,注册失败
+                    </div>
                     <div class="forget-password" style="cursor: pointer">忘记密码</div>
                     <el-button type="primary" @click="handlePersonalRegister"> 注册 </el-button>
                 </el-tab-pane>
@@ -273,19 +301,28 @@ import {
 import axios from '@/axios/axios'
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
-import {loginAccountInfoResponse,
-        registerAccountInfoResponse,
-        logoutAccountInfoResponse} from '@/inferface/responseInterface'
+import type {
+    loginAccountInfoResponse,
+    registerAccountInfoResponse,
+    logoutAccountInfoResponse
+} from '@/inferface/responseInterface'
 
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
-//用户名称
-const userName = ref(useUserStore().userId)
-//登陆注册数据
+//用户数据
+const userInfo = reactive({
+    accountNumber: '',
+    password: '',
+    phoneNumber: '',
+    idNumber: ''
+})
+
+//登陆数据
 const loginData = reactive({
     accountNumber: '', //账号名
     password: '' //密码
 })
+//注册信息管理
 const registerData = reactive({
     accountNumber: '',
     password: '',
@@ -293,11 +330,11 @@ const registerData = reactive({
     idNumber: ''
 })
 
-const userInfo = reactive({
-    userName: userName.value
-})
+//登陆注册状态管理
 const state = reactive({
-    loginState: loginState.value
+    loginState: loginState.value,
+    isSignupCorrect: '',
+    isLoginCorrect: ''
 })
 
 const componentState = reactive({
@@ -321,14 +358,33 @@ const handlePersonalLogin = () => {
         })
         .then(function (response) {
             console.log(response.data)
-            loginState.value = true
-            componentState.centerDialogVisible = false
-            let result = response as loginAccountInfoResponse
-            useUserStore().addNowAccount(result.)
-            
+
+            /*
+             *记录第一次出错原因，应当解析的是response.data而不是response
+             */
+            let result = response.data as unknown as loginAccountInfoResponse
+            if (result.code == 0) {
+                loginState.value = true
+                state.isLoginCorrect = 'true'
+                componentState.centerDialogVisible = false
+                if (typeof result === 'object' && result !== null && 'accountInfoDTO' in result) {
+                    const { accountInfoDTO } = result
+                    useUserStore().addNowAccount(
+                        accountInfoDTO.accountNumber,
+                        accountInfoDTO.idNumber,
+                        accountInfoDTO.permission,
+                        accountInfoDTO.phoneNumber
+                    )
+                    userInfo.accountNumber = useUserStore().accountNumber
+                    userInfo.idNumber = useUserStore().idNumber
+                    userInfo.password = loginData.password
+                }
+            } else {
+                state.isLoginCorrect = 'false'
+            }
         })
         .catch(function (error) {
-            console.log(error)
+            // console.log(error)
         })
 }
 
@@ -343,6 +399,13 @@ const handlePersonalRegister = () => {
         })
         .then(function (response) {
             console.log(response)
+            let result: registerAccountInfoResponse =
+                response.data as unknown as registerAccountInfoResponse
+            if (result.code === 0) {
+                state.isSignupCorrect = 'true'
+            } else {
+                state.isSignupCorrect = 'false'
+            }
         })
         .catch(function (error) {
             console.log(error)
@@ -353,6 +416,7 @@ const EnterpriseLoginClick = () => {}
 //处理账号注销
 const handleChangeLoginState = () => {
     loginState.value = false
+    location.reload()
 }
 </script>
 <style lang="scss" scoped>

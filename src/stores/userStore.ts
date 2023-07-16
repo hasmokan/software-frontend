@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-14 08:42:45
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-16 07:51:40
+ * @LastEditTime: 2023-07-16 10:14:50
  * @FilePath: \frontend\src\stores\userStore.ts
  * @Description: 登陆信息的存储
  * */
@@ -19,24 +19,29 @@ export const useUserStore = defineStore('user', {
         idNumber: ''
     }),
     getters: {
-        getAccountNumber(): string{
+        getAccountNumber(): string {
             return this!.accountNumber
-        }
+        },
         getPassword(): string {
             return this!.password
         },
-        getPhoneNumber(): string{
+        getPhoneNumber(): string {
             return this!.phoneNumber
-        }
-        getIdNumber(): string{
+        },
+        getIdNumber(): string {
             return this!.getIdNumber
         }
     },
 
     actions: {
         // action内部不能使用箭头函数
-        
-        addNowAccount(accountNumber: string,password: string,phoneNumber: string,idNumber: string) {
+
+        addNowAccount(
+            accountNumber: string,
+            password: string,
+            phoneNumber: string,
+            idNumber: string
+        ) {
             this!.accountNumber = accountNumber
             this!.password = password
             this!.phoneNumber = phoneNumber

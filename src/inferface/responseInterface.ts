@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-16 07:58:23
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-16 08:48:41
+ * @LastEditTime: 2023-07-16 13:55:36
  * @FilePath: \frontend\src\inferface\loginResponse.ts
  * @Description: 响应response的解析接口
  */
@@ -16,7 +16,7 @@
  * @property {string} idNumber - The identification number associated with the account.
  * @property {string} permission - The permission level of the account.
  */
-interface loginAccountInfoData {
+interface AccountInfoDTO {
     accountNumber: string
     phoneNumber: string
     idNumber: string
@@ -32,7 +32,7 @@ interface loginAccountInfoData {
 export interface loginAccountInfoResponse {
     message: string
     code: number
-    accountInfoDTO: loginAccountInfoData
+    accountInfoDTO: AccountInfoDTO
 }
 /***********************************************************************************************/
 
@@ -62,7 +62,7 @@ interface registerAccountInfoData {
 export interface registerAccountInfoResponse {
     message: string
     code: number
-    accountInfoDTO: loginAccountInfoData
+    accountInfoDTO: registerAccountInfoData
 }
 
 /***********************************************************************************************/
@@ -79,7 +79,6 @@ export interface logoutAccountInfoResponse {
     code: number
 }
 
-
 /***********************************************************************************************/
 
 //开卡
@@ -92,10 +91,10 @@ export interface logoutAccountInfoResponse {
  * @property {string} idNumber - The ID number.
  */
 
-interface openCardInfoData{
-    cardNumber: string,
-    phoneNumber: string,
-    idNumber: string,
+interface openCardInfoData {
+    cardNumber: string
+    phoneNumber: string
+    idNumber: string
 }
 /**
  * Represents the response object returned when retrieving open card information.
@@ -104,9 +103,9 @@ interface openCardInfoData{
  * @property {number} code - The code returned in the response.
  * @property {openCardInfoData} cardInfoDTO - The data object containing open card information.
  */
-export interface openCardInfoResponse{
-    message: string,
-    code: number,
+export interface openCardInfoResponse {
+    message: string
+    code: number
     cardInfoDTO: openCardInfoData
 }
 
@@ -120,9 +119,9 @@ export interface openCardInfoResponse{
  * @property {string} message - The message returned by the API.
  * @property {number} code - The status code returned by the API.
  */
-export interface closeCardInfoResponse{
-    message: string,
-    code: number,
+export interface closeCardInfoResponse {
+    message: string
+    code: number
 }
 
 /***********************************************************************************************/
@@ -135,10 +134,9 @@ export interface closeCardInfoResponse{
  * @property {string} message - The message returned from the query card request.
  * @property {number} code - The status code of the query card request.
  */
-export interface queryCardResponse{
-    message: string,
+export interface queryCardResponse {
+    message: string
     code: number
-
 }
 
 /***********************************************************************************************/
@@ -151,12 +149,11 @@ export interface queryCardResponse{
  * @property {string} phoneNumber - The phone number associated with the card.
  * @property {string} idNumber - The identification number associated with the card.
  */
-interface verifyCardInfoData{
-    cardNumber: string,
-    phoneNumber: string,
+interface verifyCardInfoData {
+    cardNumber: string
+    phoneNumber: string
     idNumber: string
 }
-
 
 /**
  * Represents the response object returned from the verifyCard API endpoint.
@@ -165,8 +162,23 @@ interface verifyCardInfoData{
  * @property {number} code - The status code returned from the API.
  * @property {verifyCardInfoData} cardInfoDTO - The data object containing information about the verified card.
  */
-export interface verifyCardResponse{
-    message: string,
-    code: number,
+export interface verifyCardResponse {
+    message: string
+    code: number
     cardInfoDTO: verifyCardInfoData
+}
+
+/***********************************************************************************************/
+//查询卡
+
+export interface cardListItem {
+    cardNumber: string
+    phoneNumber: string
+    idNumber: string
+}
+
+export interface queryCardListResponse {
+    message: string
+    code: number
+    List: cardListItem[]
 }

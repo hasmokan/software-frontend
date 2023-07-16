@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-15 20:26:29
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-15 21:46:28
+ * @LastEditTime: 2023-07-16 12:36:35
  * @FilePath: \frontend\src\components\bankingBusiness\bankingBusiness.vue
  * @Description: 银行业务 -->
 <template>
@@ -15,27 +15,7 @@
         </el-breadcrumb>
         <el-tabs v-model="state.activeName" class="demo-tabs" @tab-click="handleClick">
             <el-tab-pane label="转账" name="transaction">
-                <el-skeleton />
-                <br />
-                <el-skeleton style="--el-skeleton-circle-size: 100px">
-                    <template #template>
-                        <el-skeleton-item variant="circle" />
-                    </template>
-                </el-skeleton>
-                <el-skeleton />
-                <br />
-                <el-skeleton style="--el-skeleton-circle-size: 100px">
-                    <template #template>
-                        <el-skeleton-item variant="circle" />
-                    </template>
-                </el-skeleton>
-                <el-skeleton />
-                <br />
-                <el-skeleton style="--el-skeleton-circle-size: 100px">
-                    <template #template>
-                        <el-skeleton-item variant="circle" />
-                    </template>
-                </el-skeleton>
+               
             </el-tab-pane>
             <el-tab-pane label="查询" name="select">
                 2
