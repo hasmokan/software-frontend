@@ -13,22 +13,34 @@ export const useUserStore = defineStore('user', {
      * @description:用户的账号信息的保存
      */
     state: () => ({
-        userId: '' as string,
-        password: '' as string
+        accountNumber: '',
+        password: '',
+        phoneNumber: '',
+        idNumber: ''
     }),
     getters: {
-        getUserName: (userId) => {
-            return userId
+        getAccountNumber(): string{
+            return this!.accountNumber
+        }
+        getPassword(): string {
+            return this!.password
         },
-        getPassword: (password) => {
-            return password
+        getPhoneNumber(): string{
+            return this!.phoneNumber
+        }
+        getIdNumber(): string{
+            return this!.getIdNumber
         }
     },
 
     actions: {
         // action内部不能使用箭头函数
-        registerId(id: string) {
-            this!.userId = id
+        
+        addNowAccount(accountNumber: string,password: string,phoneNumber: string,idNumber: string) {
+            this!.accountNumber = accountNumber
+            this!.password = password
+            this!.phoneNumber = phoneNumber
+            this!.idNumber = idNumber
         }
     }
 })

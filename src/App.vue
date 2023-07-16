@@ -273,6 +273,9 @@ import {
 import axios from '@/axios/axios'
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
+import {loginAccountInfoResponse,
+        registerAccountInfoResponse,
+        logoutAccountInfoResponse} from '@/inferface/responseInterface'
 
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
@@ -320,6 +323,9 @@ const handlePersonalLogin = () => {
             console.log(response.data)
             loginState.value = true
             componentState.centerDialogVisible = false
+            let result = response as loginAccountInfoResponse
+            useUserStore().addNowAccount(result.)
+            
         })
         .catch(function (error) {
             console.log(error)
