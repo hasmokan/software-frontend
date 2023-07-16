@@ -2,7 +2,7 @@
  * @Author: 雄恺 陈 1021056159@qq.com
  * @Date: 2023-07-13 18:14:10
  * @LastEditors: 雄恺 陈 1021056159@qq.com
- * @LastEditTime: 2023-07-16 14:15:33
+ * @LastEditTime: 2023-07-16 14:37:23
  * @FilePath: \frontend\src\components\international\international.vue
  * @Description: 卡务管理
 -->
@@ -36,8 +36,8 @@
                         >
                     </template>
                 </el-table-column>
-                <el-button size="small" type="danger" @click="handleClickQuery">Delete</el-button>
             </el-table>
+            <el-button size="small" type="danger" @click="handleClickQuery">1232131232</el-button>
         </div>
     </div>
 </template>
@@ -80,7 +80,7 @@ const handleClickQuery = () => {
     axios
         .get('/card/getList', {
             params: {
-                idNumber: Info.idNumber
+                idNumber: useUserStore().idNumber
             }
         })
         .then(function (response) {
