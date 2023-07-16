@@ -48,6 +48,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ClickOutside as vClickoutside } from 'element-plus'
+import axios from '@/axios/axios'
 
 defineProps({
     userName: String,
@@ -72,6 +73,15 @@ const handleclickoutside = () => {
 
 const handleClickCancel = () => {
     openCard.value = false
+    axios
+        .post('/logout', {})
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+
     emit('changeLoginState', false)
 }
 </script>

@@ -4,13 +4,12 @@
             <el-container>
                 <el-header>
                     <el-menu
-                        :default-active="activeIndex2"
+                        :default-active="componentState.activeIndex2"
                         class="el-menu-demo"
                         mode="horizontal"
                         background-color="#545c64"
                         text-color="#fff"
                         active-text-color="#ffd04b"
-                        @select="handleSelect"
                     >
                         <img
                             src="@/assets/img/logo.png"
@@ -71,7 +70,7 @@
                         <personCard
                             @change-login-state="handleChangeLoginState"
                             v-model:loginState="loginState"
-                            :userName="userName"
+                            :userName="userInfo.accountNumber"
                         ></personCard>
                         <!-- 搜索框 -->
                         <div class="search">
@@ -209,7 +208,7 @@
             </el-container>
         </div>
 
-        <el-dialog v-model="centerDialogVisible" width="410px" center>
+        <el-dialog v-model="componentState.centerDialogVisible" width="410px" center>
             <template #header="{ close, titleId, titleClass }">
                 <div class="my-header" style="margin-left: 200px">
                     <h4 :id="titleId" :class="titleClass" style="font-size: 14px; color: gray">
@@ -218,17 +217,62 @@
                     </h4>
                 </div>
             </template>
-            <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+            <el-tabs v-model="componentState.activeName" class="demo-tabs">
                 <el-tab-pane label="登陆" name="first">
-                    <el-input v-model="input" placeholder="账号/用户名" />
-                    <el-input v-model="input" type="password" placeholder="密码" show-password />
-                    <div class="forget-password">忘记密码</div>
-                    <el-button type="primary" @click="handlePersonalLogin"> 登陆 </el-button>
+                    <el-input v-model="loginData.accountNumber" placeholder="账号/用户名" />
+                    <el-input
+                        v-model="loginData.password"
+                        type="password"
+                        placeholder="密码"
+                        show-password
+                    />
+                    <div
+                        class="label"
+                        v-if="state.isLoginCorrect == 'true'"
+                        style="color: greenyellow"
+                    >
+                        <el-icon><CircleCheck /></el-icon>登陆成功
+                    </div>
+                    <div
+                        class="label"
+                        v-else-if="state.isLoginCorrect == 'false'"
+                        style="color: red"
+                    >
+                        用户名或密码错误
+                    </div>
+                    <div class="forget-password" style="cursor: pointer">忘记密码</div>
+                    <el-button type="primary" @click="handlePersonalLogin"> 登录 </el-button>
                 </el-tab-pane>
                 <el-tab-pane label="注册" name="second">
-                    <el-input v-model="input" placeholder="账号/用户名" />
-                    <el-input v-model="input" type="password" placeholder="密码" show-password />
-                    <div class="forget-password">忘记密码</div>
+                    <el-input v-model="registerData.accountNumber" placeholder="账号/用户名" />
+                    <el-input
+                        v-model="registerData.password"
+                        type="password"
+                        placeholder="密码"
+                        show-password
+                    />
+                    <el-input
+                        v-model="registerData.phoneNumber"
+                        type="password"
+                        placeholder="手机号"
+                        show-password
+                    />
+                    <el-input v-model="registerData.idNumber" placeholder="ID" />
+                    <div
+                        class="label"
+                        v-if="state.isSignupCorrect == 'true'"
+                        style="color: greenyellow"
+                    >
+                        <el-icon><CircleCheck /></el-icon>注册成功
+                    </div>
+                    <div
+                        class="label"
+                        v-else-if="state.isSignupCorrect == 'false'"
+                        style="color: red"
+                    >
+                        用户名已存在,注册失败
+                    </div>
+                    <div class="forget-password" style="cursor: pointer">忘记密码</div>
                     <el-button type="primary" @click="handlePersonalRegister"> 注册 </el-button>
                 </el-tab-pane>
             </el-tabs>
@@ -239,6 +283,7 @@
 <script lang="ts" setup>
 //设置导航激活
 import { ref } from 'vue'
+import { reactive } from 'vue'
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import type { TabsPaneContext } from 'element-plus/es/components/tabs/src/constants'
@@ -252,45 +297,126 @@ import {
     handleClickTransaction,
     handleClickWithdrawal
 } from '@/router/linkTo'
+//axios
+import axios from '@/axios/axios'
 //人物卡片
 import personCard from '@/components/utils/personCard.vue'
+import type {
+    loginAccountInfoResponse,
+    registerAccountInfoResponse,
+    logoutAccountInfoResponse
+} from '@/inferface/responseInterface'
 
 // button的登陆状态
 const loginState = ref(useLoginStore().getLoginState)
-//用户名称
-const userName = ref(useUserStore().userId)
-//导航栏
-const activeIndex2 = ref('1')
+//用户数据
+const userInfo = reactive({
+    accountNumber: '',
+    password: '',
+    phoneNumber: '',
+    idNumber: ''
+})
 
-//登录注册对话框
-const centerDialogVisible = ref(false)
-const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
-}
+//登陆数据
+const loginData = reactive({
+    accountNumber: '', //账号名
+    password: '' //密码
+})
+//注册信息管理
+const registerData = reactive({
+    accountNumber: '',
+    password: '',
+    phoneNumber: '',
+    idNumber: ''
+})
 
-const input = ref('')
-//登陆事件
+//登陆注册状态管理
+const state = reactive({
+    loginState: loginState.value,
+    isSignupCorrect: '',
+    isLoginCorrect: ''
+})
+
+const componentState = reactive({
+    activeIndex2: '1', //导航栏标记位
+    centerDialogVisible: false, //登录注册对话框控制位
+    activeName: 'first' //标签页
+})
+/*********************************************************************** */
+
+//登录事件
 const PersonalLoginClick = () => {
-    centerDialogVisible.value = true
+    componentState.centerDialogVisible = true
 }
-//处理个人登陆
+
+//处理个人登录
 const handlePersonalLogin = () => {
-    centerDialogVisible.value = false
-    loginState.value = true
+    axios
+        .post('/login', {
+            accountNumber: loginData.accountNumber,
+            password: loginData.password
+        })
+        .then(function (response) {
+            console.log(response.data)
+
+            /*
+             *记录第一次出错原因，应当解析的是response.data而不是response
+             */
+            let result = response.data as unknown as loginAccountInfoResponse
+            if (result.code == 0) {
+                loginState.value = true
+                state.isLoginCorrect = 'true'
+                componentState.centerDialogVisible = false
+                if (typeof result === 'object' && result !== null && 'accountInfoDTO' in result) {
+                    const { accountInfoDTO } = result
+                    useUserStore().addNowAccount(
+                        accountInfoDTO.accountNumber,
+                        accountInfoDTO.idNumber,
+                        accountInfoDTO.permission,
+                        accountInfoDTO.phoneNumber
+                    )
+                    userInfo.accountNumber = useUserStore().accountNumber
+                    userInfo.idNumber = useUserStore().idNumber
+                    userInfo.password = loginData.password
+                }
+            } else {
+                state.isLoginCorrect = 'false'
+            }
+        })
+        .catch(function (error) {
+            // console.log(error)
+        })
 }
+
 //处理个人注册
-const handlePersonalRegister = () => {}
+const handlePersonalRegister = () => {
+    axios
+        .post('/signup', {
+            accountNumber: registerData.accountNumber,
+            password: registerData.password,
+            phoneNumber: registerData.phoneNumber,
+            idNumber: registerData.idNumber
+        })
+        .then(function (response) {
+            console.log(response)
+            let result: registerAccountInfoResponse =
+                response.data as unknown as registerAccountInfoResponse
+            if (result.code === 0) {
+                state.isSignupCorrect = 'true'
+            } else {
+                state.isSignupCorrect = 'false'
+            }
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+}
 const EnterpriseLoginClick = () => {}
+
 //处理账号注销
 const handleChangeLoginState = () => {
     loginState.value = false
-}
-
-//标签页
-const activeName = ref('first')
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-    console.log(tab, event)
+    location.reload()
 }
 </script>
 <style lang="scss" scoped>
