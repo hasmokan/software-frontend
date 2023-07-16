@@ -12,6 +12,7 @@ import transaction from '../components/transaction/transaction.vue'
 import card from '../components/cardManagement/card.vue'
 import deme from '../components/domestic/domestic.vue'
 import bankbusiness from '../components/bankingBusiness/bankingBusiness.vue'
+import cardapply from '../components/cardManagement/bankOpenAccount.vue'
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
@@ -37,6 +38,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/bankBusiness',
         name: 'bank',
         component: bankbusiness
+    },
+    {
+        path: '/cardapply',
+        name: 'cardapply',
+        component: cardapply
     }
 ]
 

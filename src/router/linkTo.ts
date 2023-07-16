@@ -27,8 +27,8 @@ export const handleClickWithdrawal = () => {
     useRouterStore().setPath('withdrawal')
 }
 export const handleClickApply = () => {
-    router.push('/card')
-    useRouterStore().setPath('apply')
+    router.push('/cardapply')
+    useRouterStore().setPath('cardapply')
 }
 export const handleClickManagement = () => {
     router.push('/card')
